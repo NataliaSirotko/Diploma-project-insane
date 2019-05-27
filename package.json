@@ -1,0 +1,33 @@
+{
+  "name": "diploma-project-insane",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NataliaSirotko/Diploma-project-insane.git"
+  },
+  "author": "NataS",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NataliaSirotko/Diploma-project-insane/issues"
+  },
+  "homepage": "https://github.com/NataliaSirotko/Diploma-project-insane#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-es6-promise": "^1.1.1",
+    "formdata-polyfill": "^3.0.18",
+    "nodelist-foreach-polyfill": "^1.2.0",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.4.4"
+  }
+}
