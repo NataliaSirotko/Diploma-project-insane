@@ -1,5 +1,5 @@
 const setDifferance = () => {
-    if (document.body.id === "page-main") {
+   
     let officeroldItems = document.querySelectorAll('.officerold .officer__card-item'),
         clickItem = document.querySelector('.officerold #first');
 
@@ -15,7 +15,6 @@ const setDifferance = () => {
         }
     });
 
-}
 };
 
 module.exports = setDifferance;
