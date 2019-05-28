@@ -5,10 +5,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
     'use strict';
     let mainNavSlider = require('./parts/mainSlider.js'), 
-        setAccordeon = require('./parts/accordeon.js');
+        setAccordeon = require('./parts/accordeon.js'),
+        download = require('./parts/download.js'),
+        showVideo = require('./parts/showvideo.js');
 
     mainNavSlider();
     setAccordeon();
+    download();
+    showVideo();
     
     if (document.body.id === "page-main") {
     let playVideo = require('./parts/playVideo.js'),

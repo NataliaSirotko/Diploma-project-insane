@@ -176,14 +176,40 @@ module.exports = g;
 var setAccordeon = function setAccordeon() {
   var button = document.querySelectorAll('.module__info-show');
   button.forEach(function (item) {
+    var text = document.createElement('p');
+    text.classList.add('hidden');
+    item.nextElementSibling.insertAdjacentElement('beforebegin', text);
+    text.innerHTML = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore \n        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat";
     item.addEventListener('click', function () {
-      var text = this.nextElementSibling;
       text.classList.toggle('hidden');
     });
   });
 };
 
 module.exports = setAccordeon;
+
+/***/ }),
+
+/***/ "./src/js/parts/download.js":
+/*!**********************************!*\
+  !*** ./src/js/parts/download.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var download = function download() {
+  var block = document.querySelectorAll('.moduleapp .module__info-book');
+  block.forEach(function (item) {
+    var aTag = document.createElement('a');
+    aTag.setAttribute('href', "./src/histfac.pdf");
+    aTag.setAttribute('download', 'download');
+    aTag.setAttribute('target', '_blank');
+    item.appendChild(aTag);
+    aTag.appendChild(item.querySelector('.download'));
+  });
+};
+
+module.exports = download;
 
 /***/ }),
 
@@ -475,6 +501,42 @@ module.exports = setDifferance;
 
 /***/ }),
 
+/***/ "./src/js/parts/showvideo.js":
+/*!***********************************!*\
+  !*** ./src/js/parts/showvideo.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var showVideo = function showVideo() {
+  var blocks = document.querySelectorAll('.moduleapp > .module');
+  blocks.forEach(function (item) {
+    var videos = item.querySelectorAll('.module .module__video-item');
+    videos[0].querySelector('.play').addEventListener('click', function () {
+      document.querySelector('.overlay').style.display = 'block';
+      var iframe = document.querySelector('#frame');
+      var able = this.innerHTML;
+      frame.src = document.querySelector('.play').getAttribute('data-url');
+      document.querySelector('#page-modules .video').style.margin = '10% auto';
+      document.querySelector('.close').addEventListener('click', function () {
+        document.querySelector('#page-modules .overlay').style.display = 'none';
+        iframe.src = iframe.src; //iframe.src = ''; 
+
+        videos[1].querySelector('.play').innerHTML = able;
+        videos[1].style.opacity = '1';
+        videos[1].style.filter = 'none';
+        videos[1].querySelector('.play').addEventListener('click', function () {
+          document.querySelector('#page-modules .overlay').style.display = 'block';
+        });
+      });
+    });
+  });
+};
+
+module.exports = showVideo;
+
+/***/ }),
+
 /***/ "./src/js/script.js":
 /*!**************************!*\
   !*** ./src/js/script.js ***!
@@ -490,10 +552,14 @@ window.addEventListener('DOMContentLoaded', function () {
   'use strict';
 
   var mainNavSlider = __webpack_require__(/*! ./parts/mainSlider.js */ "./src/js/parts/mainSlider.js"),
-      setAccordeon = __webpack_require__(/*! ./parts/accordeon.js */ "./src/js/parts/accordeon.js");
+      setAccordeon = __webpack_require__(/*! ./parts/accordeon.js */ "./src/js/parts/accordeon.js"),
+      download = __webpack_require__(/*! ./parts/download.js */ "./src/js/parts/download.js"),
+      showVideo = __webpack_require__(/*! ./parts/showvideo.js */ "./src/js/parts/showvideo.js");
 
   mainNavSlider();
   setAccordeon();
+  download();
+  showVideo();
 
   if (document.body.id === "page-main") {
     var playVideo = __webpack_require__(/*! ./parts/playVideo.js */ "./src/js/parts/playVideo.js"),
