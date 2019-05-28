@@ -1,3 +1,4 @@
+require('es6-promise').polyfill();
 require('nodelist-foreach-polyfill');
 require('formdata-polyfill');
 
@@ -19,7 +20,8 @@ window.addEventListener('DOMContentLoaded', () => {
         flexSliders = require('./parts/flexSliders.js'),
         goToLink = require('./parts/goToLink.js'),
         setDifferance = require('./parts/setDifferance.js'),
-        showNotification = require('./parts/notification.js');
+        showNotification = require('./parts/notification.js'),
+        sendForm = require('./parts/sendform.js');
             
     playVideo();
     goToLink();
@@ -40,6 +42,11 @@ window.addEventListener('DOMContentLoaded', () => {
     slides = wrap.querySelectorAll('.feed__item');
     nextPrev = document.querySelectorAll('.feed .play__circle');
     flexSliders(wrap, slides, nextPrev);
+
+    let form = document.getElementsByTagName('form'),
+        wrapper = document.querySelector('.schedule__form');
+
+    sendForm(form[1], wrapper);
     }
 });
 
