@@ -1,23 +1,20 @@
 const playVideo = () => {
-    let modal = document.querySelector('.overlay'),
-        wrapper = modal.querySelector('.video'),
-        playButton = document.querySelector('.play');
+    let modal = document.querySelector('.overlay');
 
     const openModal = () => {
         modal.style.display = 'block';      
     };
 
-    playButton.addEventListener('click', (event) => {
+    document.querySelector('.play').addEventListener('click', (event) => {
         event.preventDefault();
         openModal();
-        let url = playButton.getAttribute('data-url'),
-            video = document.querySelector('#frame'),
-            close = modal.querySelector('.close');
+        let url = document.querySelector('.play').getAttribute('data-url'),
+            video = document.querySelector('#frame');
 
         video.src = url;
-        wrapper.style.margin = '10% auto';
+        modal.querySelector('.video').style.margin = '10% auto';
 
-        close.addEventListener('click', () => {
+        modal.querySelector('.close').addEventListener('click', () => {
             modal.style.display = 'none';
         });
     });

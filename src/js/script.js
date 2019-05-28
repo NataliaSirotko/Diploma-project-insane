@@ -22,7 +22,6 @@ window.addEventListener('DOMContentLoaded', () => {
         showNotification = require('./parts/notification.js');
             
     playVideo();
-    //flexSliders();
     goToLink();
     setDifferance();
     showNotification();

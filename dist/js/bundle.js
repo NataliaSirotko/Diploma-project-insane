@@ -446,23 +446,20 @@ module.exports = showNotification;
 /***/ (function(module, exports) {
 
 var playVideo = function playVideo() {
-  var modal = document.querySelector('.overlay'),
-      wrapper = modal.querySelector('.video'),
-      playButton = document.querySelector('.play');
+  var modal = document.querySelector('.overlay');
 
   var openModal = function openModal() {
     modal.style.display = 'block';
   };
 
-  playButton.addEventListener('click', function (event) {
+  document.querySelector('.play').addEventListener('click', function (event) {
     event.preventDefault();
     openModal();
-    var url = playButton.getAttribute('data-url'),
-        video = document.querySelector('#frame'),
-        close = modal.querySelector('.close');
+    var url = document.querySelector('.play').getAttribute('data-url'),
+        video = document.querySelector('#frame');
     video.src = url;
-    wrapper.style.margin = '10% auto';
-    close.addEventListener('click', function () {
+    modal.querySelector('.video').style.margin = '10% auto';
+    modal.querySelector('.close').addEventListener('click', function () {
       modal.style.display = 'none';
     });
   });
@@ -568,8 +565,7 @@ window.addEventListener('DOMContentLoaded', function () {
         setDifferance = __webpack_require__(/*! ./parts/setDifferance.js */ "./src/js/parts/setDifferance.js"),
         showNotification = __webpack_require__(/*! ./parts/notification.js */ "./src/js/parts/notification.js");
 
-    playVideo(); //flexSliders();
-
+    playVideo();
     goToLink();
     setDifferance();
     showNotification();
