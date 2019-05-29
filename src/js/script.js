@@ -1,6 +1,7 @@
 require('es6-promise').polyfill();
 require('nodelist-foreach-polyfill');
 require('formdata-polyfill');
+require('web-animations-js').polyfill();
 
 window.addEventListener('DOMContentLoaded', () => {
 
@@ -55,4 +56,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
     }
 });
+
+if ('NodeList' in window && !NodeList.prototype.forEach) {
+    console.info('polyfill for IE11');
+    NodeList.prototype.forEach = function (callback, thisArg) {
+      thisArg = thisArg || window;
+      for (var i = 0; i < this.length; i++) {
+        callback.call(thisArg, this[i], i, this);
+      }
+    };
+  }
 
