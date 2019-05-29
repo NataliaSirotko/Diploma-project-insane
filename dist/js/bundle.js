@@ -1657,17 +1657,15 @@ var flexSliders = function flexSliders(wrap, slides, nextPrev) {
     if (nextPrev[1]) {
       wrap.appendChild(wrap.firstChild);
       wrap.insertBefore(slides[slideIndex - 1], wrap.firstChild);
-    } // slides[slideIndex - 1].animate([{
-    //         opacity: '.4'
-    //     },
-    //     {
-    //         opacity: '1'
-    //     }
-    // ], {
-    //     duration: 2000
-    // });
-    // Card Active
+    }
 
+    slides[slideIndex - 1].animate([{
+      opacity: '.4'
+    }, {
+      opacity: '1'
+    }], {
+      duration: 2000
+    }); // Card Active
 
     if (wrap.classList.contains('feed__slider')) {
       slides.forEach(function (it) {
@@ -1788,19 +1786,17 @@ var mainNavSlider = function mainNavSlider() {
       slides.forEach(function (item) {
         return item.style.display = 'none';
       });
-      slides[slideIndex - 1].style.display = 'block'; // slides[slideIndex - 1].animate([{
-      //         width: '30%'
-      //     },
-      //     {
-      //         offset: 0.6,
-      //         width: '100%'
-      //     },
-      //     {
-      //         width: '95%'
-      //     }
-      // ], {
-      //     duration: 1000
-      // });
+      slides[slideIndex - 1].style.display = 'block';
+      slides[slideIndex - 1].animate([{
+        width: '30%'
+      }, {
+        offset: 0.6,
+        width: '100%'
+      }, {
+        width: '95%'
+      }], {
+        duration: 1000
+      });
     };
 
     showSlides(slideIndex);

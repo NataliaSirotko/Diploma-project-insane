@@ -40,19 +40,19 @@
                 slides.forEach(item => item.style.display = 'none');
 
                 slides[slideIndex - 1].style.display = 'block';
-                // slides[slideIndex - 1].animate([{
-                //         width: '30%'
-                //     },
-                //     {
-                //         offset: 0.6,
-                //         width: '100%'
-                //     },
-                //     {
-                //         width: '95%'
-                //     }
-                // ], {
-                //     duration: 1000
-                // });
+                slides[slideIndex - 1].animate([{
+                        width: '30%'
+                    },
+                    {
+                        offset: 0.6,
+                        width: '100%'
+                    },
+                    {
+                        width: '95%'
+                    }
+                ], {
+                    duration: 1000
+                });
             };
 
             showSlides(slideIndex);
