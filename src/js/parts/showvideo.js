@@ -8,8 +8,7 @@ const showVideo = () => {
             let able = this.innerHTML;
             document.querySelector('.close').addEventListener('click', () => {
                 videos[1].querySelector('.play').innerHTML = able;
-                videos[1].style.opacity = '1';
-                videos[1].style.filter = 'none';
+                videos[1].style.cssText = 'opacity: 1; filter: none; -webkit-filter: none; -ms-filter: none';
             });
         });  
     });   
