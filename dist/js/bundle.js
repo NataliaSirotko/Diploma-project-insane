@@ -1871,19 +1871,35 @@ module.exports = playVideo;
 var _Promise = typeof Promise === 'undefined' ? __webpack_require__(/*! es6-promise */ "./node_modules/es6-promise/dist/es6-promise.js").Promise : Promise;
 
 var sendForm = function sendForm(form, wrapper) {
-  var input = form.getElementsByTagName('input'),
-      mail = form.querySelector('[type="email"]');
+  var input = form.getElementsByTagName('input');
+
+  if (form.querySelector('[name="phone"]')) {
+    var phone = form.querySelector('[name="phone"]');
+    phone.addEventListener('keyup', function () {
+      var re = /(\+{0,1}\d{0,1})(\d{0,3})(\d{0,3})(\d{0,4})/,
+          elem = phone.value.replace(/[^0-9\+]/g, '').match(re);
+      phone.value = !elem[2] ? elem[1] : elem[1] + ' (' + elem[2] + (elem[3] ? ') ' + elem[3] : '') + (elem[4] ? '-' + elem[4] : '');
+    });
+  }
+
+  var mail = form.querySelector('[type="email"]');
   mail.addEventListener('keyup', function () {
     mail.value = mail.value.replace(/[А-Яа-яЁё]/g, '');
   });
-  var when = form.querySelector('[type="datetime"]');
-  when.addEventListener('keyup', function () {
-    when.value = when.value.replace(/[^0-9\/\.]/g, '');
-  });
+
+  if (form.querySelector('[type="datetime"]')) {
+    var when = form.querySelector('[type="datetime"]');
+    when.addEventListener('keyup', function () {
+      when.value = when.value.replace(/[^0-9\/\.]/g, '');
+    });
+  }
+
   form.addEventListener('submit', function (event) {
     event.preventDefault();
     var img = document.createElement('img');
-    img.style.margin = "50px 100px";
+    img.style.width = "260px";
+    img.style.borderRadius = '10px';
+    img.style.marginTop = "100px";
     wrapper.appendChild(img);
     var formData = new FormData(form);
     var obj = {};
@@ -1921,13 +1937,18 @@ var sendForm = function sendForm(form, wrapper) {
       img.style.display = "block";
       img.src = "./icons/ajax-loader.gif";
     }).then(function () {
-      img.src = "./icons/herbal.png";
-      img.style.width = "150px";
+      img.src = "./icons/herbal.png"; //img.src = "./icons/thanks.jpeg";
     }).catch(function () {
       form.style.display = 'none';
       img.style.display = "block";
-      img.src = "./icons/fish.psd";
+      img.src = "./icons/fish.psd"; //img.src = "./icons/error.jpg";
     }).then(clearInput);
+    document.querySelectorAll('.sidecontrol a').forEach(function (item) {
+      item.addEventListener('click', function () {
+        form.style.display = 'block';
+        img.style.display = "none";
+      });
+    });
   });
 };
 
@@ -2043,6 +2064,8 @@ window.addEventListener('DOMContentLoaded', function () {
     var form = document.getElementsByTagName('form'),
         wrapper = document.querySelector('.schedule__form');
     sendForm(form[1], wrapper);
+    var wrapper1 = document.querySelector('.join__evolution');
+    sendForm(form[0], wrapper1);
   }
 });
 

@@ -48,6 +48,11 @@ window.addEventListener('DOMContentLoaded', () => {
         wrapper = document.querySelector('.schedule__form');
 
     sendForm(form[1], wrapper);
+
+    let wrapper1 = document.querySelector('.join__evolution');
+
+    sendForm(form[0], wrapper1);
+
     }
 });
 
