@@ -1610,11 +1610,13 @@ module.exports = download;
 /***/ (function(module, exports) {
 
 var flexSliders = function flexSliders(wrap, slides, nextPrev) {
-  wrap.style.overflow = "hidden";
-  wrap.style.display = "flex";
+  wrap.style.cssText = 'overflow: hidden; display: -webkit-box; display: -moz-box; display: -webkit-flex; display: -ms-flexbox; display: flex;';
   slides.forEach(function (item) {
-    return item.style.flexShrink = '0';
-  });
+    return item.style.cssText = 'flex-shrink: 0; -webkit-flex-shrink: 0; -moz-flex-shrink: 0; -ms-flex: 0;';
+  }); //wrap.style.overflow = "hidden";
+  //wrap.style.display = "flex";
+  //slides.forEach(item => item.style.flexShrink = '0');
+
   var slideIndex = 1;
 
   var showSlides = function showSlides(n) {
