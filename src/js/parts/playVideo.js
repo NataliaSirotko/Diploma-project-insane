@@ -5,19 +5,23 @@ const playVideo = () => {
         modal.style.display = 'block';      
     };
 
-    document.querySelector('.play').addEventListener('click', (event) => {
-        event.preventDefault();
-        openModal();
-        let url = document.querySelector('.play').getAttribute('data-url'),
-            video = document.querySelector('#frame');
+    document.querySelectorAll('.play').forEach(item => {
+        item.addEventListener('click', (event) => {
+            event.preventDefault();
+            openModal();
+            let url = item.getAttribute('data-url'),
+                video = document.querySelector('#frame');
 
-        video.src = url;
-        modal.querySelector('.video').style.margin = '10% auto';
+            video.src = url;
+            modal.querySelector('.video').style.margin = '10% auto';
 
-        modal.querySelector('.close').addEventListener('click', () => {
-            modal.style.display = 'none';
+            modal.querySelector('.close').addEventListener('click', () => {
+                modal.style.display = 'none';
+                video.src = video.src;
+            });
         });
     });
+    
 };
 
 module.exports = playVideo;

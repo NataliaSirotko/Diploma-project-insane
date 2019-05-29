@@ -6,24 +6,25 @@ window.addEventListener('DOMContentLoaded', () => {
 
     'use strict';
     let mainNavSlider = require('./parts/mainSlider.js'), 
+        playVideo = require('./parts/playVideo.js'),
         setAccordeon = require('./parts/accordeon.js'),
         download = require('./parts/download.js'),
         showVideo = require('./parts/showvideo.js');
 
     mainNavSlider();
+    playVideo();
     setAccordeon();
     download();
     showVideo();
     
     if (document.body.id === "page-main") {
-    let playVideo = require('./parts/playVideo.js'),
-        flexSliders = require('./parts/flexSliders.js'),
+    let flexSliders = require('./parts/flexSliders.js'),
         goToLink = require('./parts/goToLink.js'),
         setDifferance = require('./parts/setDifferance.js'),
         showNotification = require('./parts/notification.js'),
         sendForm = require('./parts/sendform.js');
             
-    playVideo();
+    
     goToLink();
     setDifferance();
     showNotification();

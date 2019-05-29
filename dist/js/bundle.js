@@ -1841,15 +1841,18 @@ var playVideo = function playVideo() {
     modal.style.display = 'block';
   };
 
-  document.querySelector('.play').addEventListener('click', function (event) {
-    event.preventDefault();
-    openModal();
-    var url = document.querySelector('.play').getAttribute('data-url'),
-        video = document.querySelector('#frame');
-    video.src = url;
-    modal.querySelector('.video').style.margin = '10% auto';
-    modal.querySelector('.close').addEventListener('click', function () {
-      modal.style.display = 'none';
+  document.querySelectorAll('.play').forEach(function (item) {
+    item.addEventListener('click', function (event) {
+      event.preventDefault();
+      openModal();
+      var url = item.getAttribute('data-url'),
+          video = document.querySelector('#frame');
+      video.src = url;
+      modal.querySelector('.video').style.margin = '10% auto';
+      modal.querySelector('.close').addEventListener('click', function () {
+        modal.style.display = 'none';
+        video.src = video.src;
+      });
     });
   });
 };
@@ -1973,21 +1976,11 @@ var showVideo = function showVideo() {
   blocks.forEach(function (item) {
     var videos = item.querySelectorAll('.module .module__video-item');
     videos[0].querySelector('.play').addEventListener('click', function () {
-      document.querySelector('.overlay').style.display = 'block';
-      var iframe = document.querySelector('#frame');
       var able = this.innerHTML;
-      frame.src = document.querySelector('.play').getAttribute('data-url');
-      document.querySelector('#page-modules .video').style.margin = '10% auto';
       document.querySelector('.close').addEventListener('click', function () {
-        document.querySelector('#page-modules .overlay').style.display = 'none';
-        iframe.src = iframe.src; //iframe.src = ''; 
-
         videos[1].querySelector('.play').innerHTML = able;
         videos[1].style.opacity = '1';
         videos[1].style.filter = 'none';
-        videos[1].querySelector('.play').addEventListener('click', function () {
-          document.querySelector('#page-modules .overlay').style.display = 'block';
-        });
       });
     });
   });
@@ -2014,24 +2007,24 @@ window.addEventListener('DOMContentLoaded', function () {
   'use strict';
 
   var mainNavSlider = __webpack_require__(/*! ./parts/mainSlider.js */ "./src/js/parts/mainSlider.js"),
+      playVideo = __webpack_require__(/*! ./parts/playVideo.js */ "./src/js/parts/playVideo.js"),
       setAccordeon = __webpack_require__(/*! ./parts/accordeon.js */ "./src/js/parts/accordeon.js"),
       download = __webpack_require__(/*! ./parts/download.js */ "./src/js/parts/download.js"),
       showVideo = __webpack_require__(/*! ./parts/showvideo.js */ "./src/js/parts/showvideo.js");
 
   mainNavSlider();
+  playVideo();
   setAccordeon();
   download();
   showVideo();
 
   if (document.body.id === "page-main") {
-    var playVideo = __webpack_require__(/*! ./parts/playVideo.js */ "./src/js/parts/playVideo.js"),
-        flexSliders = __webpack_require__(/*! ./parts/flexSliders.js */ "./src/js/parts/flexSliders.js"),
+    var flexSliders = __webpack_require__(/*! ./parts/flexSliders.js */ "./src/js/parts/flexSliders.js"),
         goToLink = __webpack_require__(/*! ./parts/goToLink.js */ "./src/js/parts/goToLink.js"),
         setDifferance = __webpack_require__(/*! ./parts/setDifferance.js */ "./src/js/parts/setDifferance.js"),
         showNotification = __webpack_require__(/*! ./parts/notification.js */ "./src/js/parts/notification.js"),
         sendForm = __webpack_require__(/*! ./parts/sendform.js */ "./src/js/parts/sendform.js");
 
-    playVideo();
     goToLink();
     setDifferance();
     showNotification();
