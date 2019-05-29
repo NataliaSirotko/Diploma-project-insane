@@ -21,15 +21,15 @@ const flexSliders = (wrap, slides, nextPrev) => {
             wrap.insertBefore(slides[slideIndex - 1], wrap.firstChild);
         }
 
-        slides[slideIndex - 1].animate([{
-                opacity: '.4'
-            },
-            {
-                opacity: '1'
-            }
-        ], {
-            duration: 2000
-        });
+        // slides[slideIndex - 1].animate([{
+        //         opacity: '.4'
+        //     },
+        //     {
+        //         opacity: '1'
+        //     }
+        // ], {
+        //     duration: 2000
+        // });
 
         // Card Active
         if (wrap.classList.contains('feed__slider')) {
